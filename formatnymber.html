@@ -1,8 +1,12 @@
-
-<input type="tel" id="montoIngreso" class="form-control" autocomplete="off" style="font-size: 13px;width: 100%;padding: 16px 5px !important;" name="montoIngreso" onkeyup="format(this)"; onchange="format(this);">
-
+<html>
+<head>
 <script type="text/javascript">
-function format(input){
+function soloNumeros(e){
+	var key = window.Event ? e.which : e.keyCode
+	return (key >= 48 && key <= 57)
+}
+	
+function soloNumerosConPunto(input){
 	var num = input.value.replace(/\./g,'');
 	if(!isNaN(num)){
 		num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
@@ -15,3 +19,8 @@ function format(input){
 	}
 }
 </script>
+</head>
+<body>
+<input type="tel" id="montoIngreso" class="form-control" autocomplete="off" style="font-size: 13px;width: 100%;padding: 16px 5px !important;" name="montoIngreso" onkeyup="format(this)"; onchange="format(this);">
+
+
